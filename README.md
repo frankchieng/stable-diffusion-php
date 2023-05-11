@@ -26,8 +26,11 @@ text to image generating examples:
 image to image generating examples:
 
 original pic:
+
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/ofo1Z5p46CxExkkA7HdQAyUBpOfg_20230512000111_4280277550.png)
+
 prompt: a bedroom,a laptop on desk
+
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/ofo1Z5p46CxExkkA7HdQAyUBpOfg_20230512000746_1057778417.png)
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/ofo1Z5p46CxExkkA7HdQAyUBpOfg_20230512000746_4223862173.png)
 
