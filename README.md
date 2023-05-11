@@ -17,8 +17,6 @@ chrome browser and mobile phone visit with various jquery plugins.
 plan for future:
 complete the image to image/masking inpainting ,cuz stability.ai has no controlnet API for use, continue to follow the latest info on official website.
 
-if anyone interested can join us on wechat group or my individual QR code:
-
-![image](https://github.com/frankchieng/imagegeneration/blob/main/wechat.jpg)
+if anyone interested can join us on wechat group or my individual WeChat：714580106
 
 
