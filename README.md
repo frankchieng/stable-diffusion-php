@@ -1,4 +1,7 @@
 # imagegeneration
+
+stable diffusion text2img and img2img AI with php 
+
 stability.ai API text to image and image to image with php coding
 
 because the stability.ai API documents has no clue of php version, develop from scratch to reference.
@@ -15,6 +18,7 @@ plan for future:
 complete the image to image/masking inpainting ,cuz stability.ai has no controlnet API for use, continue to follow the latest info on official website.
 
 if anyone interested can join us on wechat group or my individual QR code:
+
 ![image](https://github.com/frankchieng/imagegeneration/blob/main/wechat.jpg)
 
 
