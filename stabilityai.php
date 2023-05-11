@@ -165,6 +165,7 @@
     <script src="js/chat.js"></script>
     <script src="js/highlight.min.js"></script>
     <script src="js/showdown.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
     <script>
   $( function() {
     var handle = $( "#custom-handle" );
