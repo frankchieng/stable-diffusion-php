@@ -22,6 +22,7 @@ text to image generating examples:
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230511232607.jpg)
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230511232614.jpg)
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230511232621.jpg)
+
 if anyone interested can join us on wechat group or my individual WeChat：
 
 ![image](https://github.com/frankchieng/imagegeneration/blob/main/wechat.jpg)
