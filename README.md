@@ -4,6 +4,8 @@ stable diffusion text2img and img2img AI with php
 
 stability.ai API text to image and image to image with php coding
 
+you should define your own stability.ai api key in the config.inc.php file.
+
 because the stability.ai API documents has no clue of php version, develop from scratch FYI.
 
 php+mysql+jquery
