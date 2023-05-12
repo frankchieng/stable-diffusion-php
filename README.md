@@ -14,6 +14,8 @@ sdimg2img.php is the image to image landing page.
 
 chrome browser and mobile phone visit with various jquery plugins.
 
+tips:the whole project contains chatgpt and stable diffusion,so js/chat.js includes some chatgpt javascript,you should ignore it, backend administration contains chatgpt tokens consumption and fees codes and wechat userinfo,wepay integrated in this whole project,anyone want to follow leave a message here
+
 plan for future:
 complete the image to image/masking inpainting ,cuz stability.ai has no controlnet API for use, continue to follow the latest info on official website.
 
