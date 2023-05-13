@@ -6,7 +6,7 @@ stability.ai API text to image and image to image with php coding
 
 you should define your own stability.ai api key in the config.inc.php file.
 
-because the stability.ai API documents has no clue of php version, develop from scratch FYI.If it's available for you, give me a star for.supporting.
+because the stability.ai API documents has no clue of php version, develop from scratch FYI.If it's available for you, give me a star for supporting.
 
 php+mysql+jquery
 supported by php version >= 7.4.33
