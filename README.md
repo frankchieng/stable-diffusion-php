@@ -41,16 +41,19 @@ prompt: a bedroom,a laptop on desk
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/ofo1Z5p46CxExkkA7HdQAyUBpOfg_20230512000746_1057778417.png)
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/ofo1Z5p46CxExkkA7HdQAyUBpOfg_20230512000746_4223862173.png)
 
+image upscaling examples:
+resolution 512*512
+
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/512resolution.png)
+
+resolution 1024*1024
+
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/1024resolution.png)
+
+resolution 2048*2048
+
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/2048resolution.png)
+
 if anyone interested can contact me on my individual Weixin：
 
 ![image](https://github.com/frankchieng/imagegeneration/blob/main/wechat.jpg)
-
-image upscaling examples:
-resolution 512*512
-![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/512resolution.png)
-resolution 1024*1024
-![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/1024resolution.png)
-resolution 2048*2048
-![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/2048resolution.png)
-
-
