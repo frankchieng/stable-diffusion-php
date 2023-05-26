@@ -12,4 +12,6 @@ define('OPENAI_API_KEY','');//use your own api key
 define('OPENAI_AUDIO_MODEL', 'whisper-1');
 $SD_STYLE_PRESET = array('3d-model', 'analog-film', 'anime', 'cinematic', 'comic-book', 'digital-art', 'enhance', 'fantasy-art', 'isometric', 'line-art', 'low-poly', 'modeling-compound', 'neon-punk', 'origami', 'photographic', 'pixel-art', 'tile-texture');
 define('STABILITYAI_IMG_UPSCALE_URL', STABILITYAI_BASE_URL.'/v1/generation/esrgan-v1-x2plus/image-to-image/upscale');
+define('STABILITYAI_IMG_INPAINT_URL', STABILITYAI_BASE_URL.'/v1/generation/stable-inpainting-512-v2-0/image-to-image/masking');
+define('MASK_SOURCE', 'MASK_IMAGE_WHITE');
 ?>
