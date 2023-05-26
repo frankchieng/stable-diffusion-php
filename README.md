@@ -1,8 +1,8 @@
 # stable-diffusion-php
 
-stable diffusion text2img ,img2img and image upscaling of AI with php 
+stable diffusion text2img ,img2img,imginpaint and image upscaling of AI with php 
 
-stability.ai API text to image, image to image and image upscaling with php coding
+stability.ai API text to image, image to image, image mask inpainting with canvas and image upscaling with php coding
 
 you can experience with the latest stable diffusion SDXL beta engine here.
 
@@ -16,13 +16,14 @@ supported by php version >= 7.4.33
 stabilityai.php is the text to image landing page.
 sdimg2img.php is the image to image landing page. (upload img should be multiply of 64, otherwise the REST server will response with error)
 sdupscaling.php is the image upscaling landing page.
+sdimginpaint.php is the image mask inpaint landing page.
 
 chrome browser and mobile phone visit with various jquery plugins.
 
 tips:the whole project contains chatgpt and stable diffusion,so js/chat.js includes some chatgpt javascript,you should ignore it, backend administration contains chatgpt tokens consumption and fees codes and wechat userinfo,wepay integrated in this whole project,anyone want to follow leave a message here
 
 plan for future:
-complete the image to image/masking inpainting ,cuz stability.ai currently has no controlnet API for use, continue to follow the latest info on official website.
+complete various image generation AI functionalities ,cuz stability.ai currently has no controlnet API for use, continue to follow the latest info on official website.
 
 text to image generating examples:
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230511202653.jpg)
@@ -53,6 +54,24 @@ resolution 1024*1024
 resolution 2048*2048
 
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/2048resolution.png)
+
+image mask inpaint generation examples:
+
+original pic:
+
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/mmexport1685060511391.png)
+
+canvas mask img:
+
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/ofo1Z5oCLVFQDBsHJKVm5j_OlAF8_20230526102607_imageinpaint.png)
+
+prompt:batman face
+
+mask inpaint image:
+
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/ofo1Z5oCLVFQDBsHJKVm5j_OlAF8_20230526102617_772632365.png)
+
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/ofo1Z5oCLVFQDBsHJKVm5j_OlAF8_20230526102617_3555459258.png)
 
 if anyone interested can contact me on my individual Weixin：
 
