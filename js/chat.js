@@ -66,7 +66,27 @@ function autoresize() {
 }
 
 function picautoresize() {
-    var textarea = $('#ai-pic-target');
+    var textarea = $('#img2img-target');
+    var width = textarea.width();
+    var content = (textarea.val() + "a").replace(/\\n/g, '<br>');
+    var div = $('<div>').css({
+        'position': 'absolute',
+        'top': '-99999px',
+        'border': '1px solid red',
+        'width': width,
+        'font-size': '15px',
+        'line-height': '20px',
+        'white-space': 'pre-wrap'
+    }).html(content).appendTo('body');
+    var height = div.height();
+    var rows = Math.ceil(height / 20);
+    div.remove();
+    textarea.attr('rows', rows);
+    $("#article-wrapper").height(parseInt($(window).height()) - parseInt($("#fixed-block").height()) - parseInt($(".layout-header").height()) - 80);
+}
+
+function imginpaintautoresize() {
+    var textarea = $('#imginpaint-target');
     var width = textarea.width();
     var content = (textarea.val() + "a").replace(/\\n/g, '<br>');
     var div = $('<div>').css({
@@ -97,15 +117,20 @@ $(document).ready(function () {
 
     $(window).resize(function () {
         autoresize();
-	picautoresize();
+	    picautoresize();
+        imginpaintautoresize();
     });
 
     $('#kw-target').on('input', function () {
         autoresize();
     });
 
-    $('#ai-pic-target').on('input', function () {
+    $('#img2img-target').on('input', function () {
         picautoresize();
+    });
+
+    $('#imginpaint-target').on('input', function () {
+        imginpaintautoresize();
     });
 
     $("#ai-btn").click(function () {
@@ -123,13 +148,14 @@ $(document).ready(function () {
     });
 
     $("#ai-pic-btn").click(function () {
-	picautoresize();
+	    picautoresize();
         var prompt = $("#ai-pic-target").val();
         //获取各个图片参数
         var cfgscale = $('#cfgscale').val();
         var steps = $('#steps').val();
         var engine = $('#enginelist').val();
         var sampler = $('#samplerlist').val();
+        var stylepreset = $('#stylelist').val();
         var sdheight = $('#sd_height').val();
         var sdwidth = $('#sd_width').val();   
         var sdseed = $('#spinner').val();  
@@ -156,11 +182,13 @@ $(document).ready(function () {
                 sd_height: sdheight,
                 sd_width: sdwidth,
                 sd_sampler: sampler,
+                style_preset: stylepreset,
                 sd_seed: sdseed,
                 sd_samples: samples,
                 action: 'generatePic',
             },
             success: function (results) {
+                console.log(results);
                 layer.close(loading);
                 //多图获取
                 $.each(results,function(index,item){ 
@@ -174,7 +202,7 @@ $(document).ready(function () {
 
     });
 
-//图片生成图片
+    //图片生成图片
     $("#img2img-btn").click(function () {
         picautoresize();
         var prompt = $("#img2img-target").val();
@@ -183,6 +211,7 @@ $(document).ready(function () {
         var steps = $('#img2imgsteps').val();
         var engine = $('#img2imgenginelist').val();
         var sampler = $('#img2imgsamplerlist').val(); 
+        var stylepreset = $('#img2imgstylelist').val();
         var sdseed = $('#img2imgspinner').val();  
         var samples = $('#img2imgsamples').val(); 
         var imagestrength = $('#image_strength').val();
@@ -207,6 +236,7 @@ $(document).ready(function () {
                 stabilityai_engine: engine,
                 image_strength: imagestrength,
                 sd_sampler: sampler,
+                style_preset: stylepreset,
                 sd_seed: sdseed,
                 sd_samples: samples,
                 action: 'generatePic',
@@ -215,6 +245,60 @@ $(document).ready(function () {
                 layer.close(loading);
                 //多图获取
                 //console.log(results);
+                $.each(results,function(index,item){ 
+                    $("#article-wrapper").append('<li class="pic-content" style="color:#9ca2a8;">图片seed种子数为:'+item.seed+'</li>');
+                    $("#article-wrapper").append('<li class="pic-content"><img src="'+item.image_path+'"/></li>');   
+                })
+               //$("#img2img-target").attr("readonly", true);
+               //$("#img2img-btn").hide();            
+            }
+        });
+
+    });
+
+    //图片局部修改
+    $("#imginpaint-btn").click(function () {
+        imginpaintautoresize();
+        var prompt = $("#imginpaint-target").val();
+        //获取各个图片参数
+        var cfgscale = $('#img2imgcfgscale').val();
+        var steps = $('#img2imgsteps').val();
+        var sampler = $('#img2imgsamplerlist').val(); 
+        var stylepreset = $('#img2imgstylelist').val();
+        var sdseed = $('#img2imgspinner').val();  
+        var samples = $('#img2imgsamples').val(); 
+        var canvas = document.getElementById('canvas');
+        var imgurl = canvas.toDataURL('image/png');
+        if (prompt == "") {
+            layer.msg("请输入您的描述", { icon: 5 });
+            return;
+        }
+
+        var loading = layer.msg("正在生成图片，请耐心等待", {
+            icon: 16,
+            shade: 0.4,
+            time: false //取消自动关闭
+        });
+        $.ajax({
+            cache: false,
+            type: "POST",
+            url: "generateimginpaint.php",
+            dataType: 'json',
+            data: {
+                message: prompt,
+                cfg_scale: cfgscale,
+                sd_steps: steps,
+                sd_sampler: sampler,
+                style_preset: stylepreset,
+                sd_seed: sdseed,
+                sd_samples: samples,
+                img_url: imgurl,
+                action: 'generatePic',
+            },
+            success: function (results) {
+                layer.close(loading);
+                //多图获取
+                console.log(results);
                 $.each(results,function(index,item){ 
                     $("#article-wrapper").append('<li class="pic-content" style="color:#9ca2a8;">图片seed种子数为:'+item.seed+'</li>');
                     $("#article-wrapper").append('<li class="pic-content"><img src="'+item.image_path+'"/></li>');   
