@@ -150,6 +150,7 @@ $(document).ready(function () {
     $("#ai-pic-btn").click(function () {
 	    picautoresize();
         var prompt = $("#ai-pic-target").val();
+        var negativeprompt = $("#negative-prompt").val();
         //获取各个图片参数
         var cfgscale = $('#cfgscale').val();
         var steps = $('#steps').val();
@@ -176,6 +177,7 @@ $(document).ready(function () {
             dataType: 'json',
             data: {
                 message: prompt,
+                negative_message: negativeprompt,
                 cfg_scale: cfgscale,
                 sd_steps: steps,
                 stabilityai_engine: engine,
@@ -194,9 +196,12 @@ $(document).ready(function () {
                 $.each(results,function(index,item){ 
                     $("#article-wrapper").append('<li class="pic-content" style="color:#9ca2a8;">图片seed种子数为:'+item.seed+'</li>');
                     $("#article-wrapper").append('<li class="pic-content"><img src="'+item.image_path+'"/></li>');   
-                })
-                $("#ai-pic-target").attr("readonly", true);
-                $("#ai-pic-btn").hide();            
+                })          
+            },
+            error: function (req, status, error) {
+                console.log(req);
+                layer.close(loading);
+                console.log(status);           
             }
         });
 
