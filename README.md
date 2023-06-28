@@ -1,4 +1,5 @@
 # stable-diffusion-php
+stability updates new engine stable-diffusion-xl-1024-v0-9, the resolution improved a lot with 1024*1024, adding negative prompt with weights
 
 stable diffusion text2img ,img2img,imginpaint and image upscaling of AI with php 
 
@@ -24,6 +25,13 @@ tips:the whole project contains chatgpt and stable diffusion,so js/chat.js inclu
 
 plan for future:
 complete various image generation AI functionalities ,cuz stability.ai currently has no controlnet API for use, continue to follow the latest info on official website.
+
+SDXL 0.9 new engine generation:
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/blonde1.png)
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/blonde2.png)
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/brunette.png)
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/chinese1.png)
+![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/chinese2.png)
 
 text to image generating examples:
 ![image](https://github.com/frankchieng/stable-diffusion-php/blob/main/assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230511202653.jpg)
