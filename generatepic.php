@@ -1,9 +1,10 @@
 <?php
 require_once('config.inc.php');
 if ($_POST['action'] == "generatePic") {
-error_reporting(E_ALL^E_WARNING);
+error_reporting(E_ALL^E_WARNING^E_NOTICE);
 //获取图片各个参数
 $prompt = $_POST['message'];
+$negative_prompt = $_POST['negative_message'];
 $cfgscale = $_POST['cfg_scale'];
 $sd_steps = $_POST['sd_steps'];
 $stabilityai_engine = $_POST['stabilityai_engine'];
@@ -22,7 +23,7 @@ $engine_list_url = $base_url.'/v1/engines/list';
 $prompt_image_url = STABILITYAI_BASE_URL.'/v1/generation/'.$stabilityai_engine.'/text-to-image';
 
 //文字生成图片
-function promptToImage($api_prompt_image_url, $stability_api_key, $message, $cfg_scale, $steps, $height, $width, $sampler, $seed, $samples)
+function promptToImage($api_prompt_image_url, $stability_api_key, $message, $negative_message, $cfg_scale, $steps, $height, $width, $sampler, $seed, $samples)
 {
     //使用curl发送请求
     $ch=curl_init();
@@ -44,14 +45,27 @@ function promptToImage($api_prompt_image_url, $stability_api_key, $message, $cfg
         )
     );
     //设置请求的参数
-    $data = array("text_prompts"=>array(["text"=>$message]),
-        "cfg_scale"=>intval($cfg_scale), 
-        "height"=>intval($height), 
-        "width"=>intval($width), 
-        "samples"=>intval($samples),
-        "sampler" => $sampler,
-        "seed" => intval($seed),
-        "steps"=>intval($steps)); 
+    if ($negative_message=="") {
+        $data = array("text_prompts"=>array(["text"=>$message]),
+            "cfg_scale"=>intval($cfg_scale), 
+            "height"=>intval($height),
+            "width"=>intval($width),
+            "samples"=>intval($samples),
+            "sampler" => $sampler,
+            "style_preset" => $stylepreset,
+            "seed" => intval($seed),
+            "steps"=>intval($steps)); 
+    } else {
+        $data = array("text_prompts"=>array(["text"=>$message,"weight"=>1.0],["text"=>$negative_message,"weight"=>-1.0]),
+            "cfg_scale"=>intval($cfg_scale), 
+            "height"=>intval($height),
+            "width"=>intval($width),
+            "samples"=>intval($samples),
+            "sampler" => $sampler,
+            "style_preset" => $stylepreset,
+            "seed" => intval($seed),
+            "steps"=>intval($steps));         
+    }
     curl_setopt($ch,CURLOPT_POST,true);
     curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($data));
     $response=curl_exec($ch);
@@ -83,6 +97,6 @@ function promptToImage($api_prompt_image_url, $stability_api_key, $message, $cfg
     }
 }
 
-promptToImage($prompt_image_url, $api_key, $prompt, $cfgscale, $sd_steps, $sd_height, $sd_width, $sd_sampler, $sd_seed, $sd_samples);
+promptToImage($prompt_image_url, $api_key, $prompt, $negative_prompt, $cfgscale, $sd_steps, $sd_height, $sd_width, $sd_sampler, $sd_seed, $sd_samples);
 }
 ?>
