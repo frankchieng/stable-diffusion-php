@@ -136,6 +136,8 @@
      <div id="sampleslider" style="width:calc(100% - 90px);max-width:180px;margin-top:5px;margin-bottom:5px;">
   <div id="sample-custom-handle" class="ui-slider-handle"></div>
 </div>
+<span style="color:#9ca2a8;margin-top:5px;margin-bottom:5px;">负面词negative prompt(比如ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, bad anatomy, watermark, signature, cut off, low contrast, underexposed, overexposed, bad art, beginner, amateur, distorted face):&nbsp;&nbsp;</span>
+            <textarea name="kw-target" placeholder="在此填写负面词" id="negative-prompt"rows=5></textarea>
                         <ul id="article-wrapper">
 
                         </ul>
